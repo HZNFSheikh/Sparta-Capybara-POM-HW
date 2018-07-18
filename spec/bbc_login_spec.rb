@@ -55,6 +55,15 @@ describe 'Testing the BBC' do
   expect(@bbc_site.bbc_login.wrong_user_error).to be true
 end
 
+it "should respond with error message if email has an incorrect symbol or character" do
+      @bbc_site = BBC_Site.new
+      @bbc_site.bbc_homepage.visit_home_page
+      @bbc_site.bbc_homepage.click_sign_in_link
+      @bbc_site.bbc_login.fill_wrong_char_email
+      @bbc_site.bbc_login.click_password
+      expect(@bbc_site.bbc_login.wrong_char_error).to be true
+    end
+
 
 
 
